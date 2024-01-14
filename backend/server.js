@@ -4,6 +4,7 @@ const app = express()
 const mongoose = require('mongoose')
 const customer=require('./routes/managerRoutes')
 const user=require('./routes/userRoutes')
+const client = require('./routes/customerRoutes')
 
 app.use(express.json())
 
@@ -17,6 +18,7 @@ app.use((req, res, next) =>{
 
 app.use('/api/dish',customer)
 app.use('/api/user',user)
+app.use('/api/customer',client)
 app.use((req, res) => {
     res.status(404).json({error: 'Page not found'});
 })

@@ -23,7 +23,12 @@ const mongoose = require('mongoose')
    delivery_hour: {
     type : String,
     required:true
-   }
+   },
+   privilage:{
+    type:String,
+    required:true,
+    default:'manager'
+  }
 
  },{timestamps:true})
 

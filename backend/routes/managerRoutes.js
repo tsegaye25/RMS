@@ -1,8 +1,11 @@
 const customer = require('../controller/managerController')
 
+const requireAuth=require('../middleware/customerAuth')
+
 const express = require('express')
 
 const routes=express.Router();
+
 const multer = require('multer')
 
 const storage = multer.diskStorage({
@@ -16,6 +19,8 @@ const storage = multer.diskStorage({
   })
  
   const upload = multer({ storage: storage })
+
+  routes.use(requireAuth)
 
   routes.post('/customer',upload.single('image'),customer.postCustomer)
   routes.get('/customer',customer.getCustomer)
